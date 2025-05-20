@@ -1,7 +1,10 @@
 class AppwriteException(Exception):
-    def __init__(self, message, code = 0, type = None, response = None):
+    def __init__(self, message, code=0, type=None, response=None):
         self.message = message
         self.code = code
         self.type = type
         self.response = response
         super().__init__(self.message)
+
+    def __str__(self):
+        return f"[{self.code}] {self.type or 'Error'}: {self.message}"
